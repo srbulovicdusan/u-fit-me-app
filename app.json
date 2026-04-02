@@ -14,10 +14,11 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.fitsa.app"
+      "bundleIdentifier": "com.markobijelovic.pt",
+      "usesAppleSignIn": true
     },
     "android": {
-      "package": "com.fitsa.app",
+      "package": "com.markobijelovic.pt",
       "adaptiveIcon": {
         "backgroundColor": "#FAFAF7",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -27,7 +28,24 @@
     },
     "plugins": [
       "expo-router",
-      "expo-image"
-    ]
+      "expo-image",
+      "expo-web-browser",
+      "expo-apple-authentication",
+      ["expo-font", { "fonts": [
+        "node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf",
+        "node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf",
+        "node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf",
+        "node_modules/@expo-google-fonts/plus-jakarta-sans/400Regular/PlusJakartaSans_400Regular.ttf",
+        "node_modules/@expo-google-fonts/plus-jakarta-sans/500Medium/PlusJakartaSans_500Medium.ttf",
+        "node_modules/@expo-google-fonts/plus-jakarta-sans/600SemiBold/PlusJakartaSans_600SemiBold.ttf",
+        "node_modules/@expo-google-fonts/plus-jakarta-sans/700Bold/PlusJakartaSans_700Bold.ttf"
+      ]}]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "285524e9-4e55-43e0-892a-1aacf22bd4e6"
+      }
+    }
   }
 }

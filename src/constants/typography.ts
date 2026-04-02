@@ -5,13 +5,12 @@ const serif = Platform.OS === 'ios' ? 'Georgia' : 'serif';
 export const Typography = {
   // Display / Brand
   logo: {
-    fontFamily: serif,
     fontSize: 48,
     fontWeight: '700',
   } as TextStyle,
   h1Display: {
-    fontFamily: serif,
-    fontSize: 22,
+    // fontFamily: serif,
+    fontSize: 24,
     fontWeight: '700',
   } as TextStyle,
 
@@ -101,6 +100,6 @@ export const Spacing = {
   avatarLg: 88,
   avatarMd: 52,
   avatarSm: 36,
-  progressBarHeight: 4,
+  progressBarHeight: 8,
   minTouchTarget: 44,
 } as const;

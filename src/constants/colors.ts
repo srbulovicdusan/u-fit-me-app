@@ -1,32 +1,37 @@
 export const Colors = {
   // Backgrounds
-  bg: '#FAFAF7',
+  bg: '#F7F3EF',
+  bgSecondary: '#EFE8E1',
   card: '#FFFFFF',
 
   // Primary
-  primary: '#8B6E4E',
-  primaryLight: '#F5EDE4',
-  primaryDark: '#5C452E',
+  primary: '#8FAF9A',
+  primaryPressed: '#7C9E89',
+  primaryLight: '#DCE8E1',
 
-  // Accent
-  accent: '#C47B5A',
-  accentLight: '#FDF0EB',
+  // Secondary
+  accent: '#D6A6A1',
+  accentPressed: '#C48F8A',
+  accentLight: '#F1DDDB',
 
   // Success
-  success: '#4A8C6F',
-  successLight: '#E8F5EE',
+  success: '#8FAF9A',
+  successLight: '#DCE8E1',
 
   // Text
-  text: '#2C2A26',
-  textSecondary: '#6B6860',
-  muted: '#94918A',
+  text: '#2F2F2F',
+  textSecondary: '#6B6B6B',
+  muted: '#A8A8A8',
 
   // Borders
-  border: '#E8E6E0',
-  borderLight: '#F0EEE8',
+  border: '#E4DDD6',
+  borderLight: '#EFE8E1',
+
+  // Grey
+  grey10: '#1A1A1A',
 
   // Other
-  highlight: '#E8DDD0',
+  highlight: '#DCE8E1',
   danger: '#C4574B',
   dangerLight: '#FDEDED',
   white: '#FFFFFF',

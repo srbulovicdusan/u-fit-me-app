@@ -15,9 +15,15 @@ export interface OnboardingSelections {
   [step: number]: string;
 }
 
+export interface OnboardingOption {
+  label: string;
+  description?: string;
+  icon?: string;
+}
+
 export interface OnboardingStep {
   emoji: string;
   title: string;
   subtitle: string;
-  options: string[] | null;
+  options: OnboardingOption[] | null;
 }

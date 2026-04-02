@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
-import ScreenContainer from '@/components/ui/ScreenContainer';
-import PrimaryButton from '@/components/ui/PrimaryButton';
-import ProfileHeader from '@/components/profile/ProfileHeader';
-import ProfileMenuItem from '@/components/profile/ProfileMenuItem';
-import { useAuth } from '@/hooks/useAuth';
+import ScreenContainer from '@/components/ui/screen-container';
+import PrimaryButton from '@/components/ui/primary-button';
+import ProfileHeader from '@/components/profile/profile-header';
+import ProfileMenuItem from '@/components/profile/profile-menu-item';
+import { useAuth } from '@/hooks/use-auth';
 import { Spacing } from '@/constants/typography';
 
 const MENU_ITEMS = [

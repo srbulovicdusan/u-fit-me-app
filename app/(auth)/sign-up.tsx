@@ -5,8 +5,8 @@ import { Link, router } from 'expo-router';
 import { Colors } from '@/constants/colors';
 import { Typography, Spacing } from '@/constants/typography';
 import { APP_NAME } from '@/constants/strings';
-import { useAuth } from '@/hooks/useAuth';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import { useAuth } from '@/hooks/use-auth';
+import PrimaryButton from '@/components/ui/primary-button';
 
 export default function SignUpScreen() {
   const { signUp } = useAuth();

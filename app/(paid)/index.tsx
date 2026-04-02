@@ -1,26 +1,36 @@
+import { ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
-import ScreenContainer from '@/components/ui/ScreenContainer';
-import HomeHeader from '@/components/home/HomeHeader';
-import StreakRow from '@/components/home/StreakRow';
-import TodayWorkoutCard from '@/components/home/TodayWorkoutCard';
-import TrainerNote from '@/components/home/TrainerNote';
-import WeekOverview from '@/components/workout/WeekOverview';
-import { WEEK_PLAN } from '@/data/workouts';
+import ScreenContainer from '@/components/ui/screen-container';
+import HomeHeader from '@/components/home/home-header';
+import TodayWorkoutCard from '@/components/home/today-workout-card';
+import TrainerNote from '@/components/home/trainer-note';
+import WeekOverview from '@/components/workout/week-overview';
+import WeeklyProgress from '@/components/home/weekly-progress';
+import { useUserWorkoutWeek } from '@/hooks/use-user-workout-week';
+import { Colors } from '@/constants/colors';
 
 export default function HomePaidScreen() {
-  const todayWorkout = WEEK_PLAN.find(d => d.today);
+  const { weekDays: weekPlan, done, total, remaining, progress, isLoading } = useUserWorkoutWeek();
+  const todayWorkout = weekPlan.find(d => d.today);
 
   function handleStartWorkout() {
     if (todayWorkout) {
-      router.push({ pathname: '/workout/active', params: { dayIndex: WEEK_PLAN.indexOf(todayWorkout).toString() } });
+      router.push({ pathname: '/workout/detail', params: { dayId: todayWorkout.dayId } });
     }
+  }
+
+  if (isLoading) {
+    return (
+      <ScreenContainer>
+        <ActivityIndicator size="large" color={Colors.primary} style={{ flex: 1 }} />
+      </ScreenContainer>
+    );
   }
 
   return (
     <ScreenContainer>
       <HomeHeader greeting="Zdravo! 💪" />
-      <StreakRow />
-      {todayWorkout && (
+      {todayWorkout && !todayWorkout.rest && (
         <TodayWorkoutCard
           name={todayWorkout.name}
           exerciseCount={todayWorkout.exercises.length}
@@ -29,7 +39,8 @@ export default function HomePaidScreen() {
         />
       )}
       <TrainerNote message={'"Danas se fokusiraj na kontrolisan pokret. Bolje je raditi sporije sa pravilnom formom nego brzo i neprecizno!" 🎯'} />
-      <WeekOverview weekPlan={WEEK_PLAN} />
+      <WeeklyProgress done={done} total={total} remaining={remaining} progress={progress} />
+      <WeekOverview weekPlan={weekPlan} />
     </ScreenContainer>
   );
 }

@@ -89,42 +89,17 @@ export const WEEK_PLAN: WorkoutDay[] = [
 
 export const PACKAGES: Package[] = [
   {
-    id: 'starter',
-    name: 'Starter',
-    price: '4.900',
-    duration: '4 nedelje',
+    id: 'plan-treninga',
+    name: 'Plan treninga',
+    price: '5.900',
+    duration: 'Jednokratna kupovina',
     popular: false,
     features: [
-      'Personalizovan plan',
+      'Personalizovan plan treninga',
       'Video za svaku vežbu',
-      'Chat podrška',
-    ],
-  },
-  {
-    id: 'transform',
-    name: 'Transform',
-    price: '11.900',
-    duration: '12 nedelja',
-    popular: true,
-    features: [
-      'Personalizovan plan',
-      'Video za svaku vežbu',
-      'Chat podrška',
+      'Chat podrška sa trenerom',
       'Praćenje napretka',
       'Nedeljne korekcije',
-    ],
-  },
-  {
-    id: 'premium',
-    name: 'Premium',
-    price: '19.900',
-    duration: '6 meseci',
-    popular: false,
-    features: [
-      'Sve iz Transform',
-      'Mesečni video poziv',
-      'Prioritetna podrška',
-      'Nutrition vodič',
     ],
   },
 ];
@@ -145,28 +120,43 @@ export const TRANSFORMATIONS: Transformation[] = [
 
 export const ONBOARDING_STEPS: OnboardingStep[] = [
   {
-    emoji: '👋',
-    title: 'Dobrodošla!',
-    subtitle: 'Ja sam Maja Petrović, tvoj personalni trener. Hajde da napravimo plan baš za tebe.',
+    emoji: '',
+    title: 'Dobrodošla!\nJa sam Marko, tvoj trener',
+    subtitle: 'Zajedno ćemo napraviti plan treninga za tvoje ciljeve i tvoj život, bez stresa i pretjerivanja.',
     options: null,
   },
   {
-    emoji: '🎯',
+    emoji: '',
     title: 'Koji je tvoj cilj?',
-    subtitle: 'Izaberi ono što ti je najvažnije',
-    options: ['Mršavljenje', 'Toniranje tela', 'Više energije', 'Zdravlje i pokretljivost'],
+    subtitle: 'Izaberi šta želiš da postigneš.',
+    options: [
+      { label: 'Mršavljenje', icon: 'Flame' },
+      { label: 'Snaga', icon: 'Dumbbell' },
+      { label: 'Mobilnost', icon: 'StretchHorizontal' },
+      { label: 'Više energije', icon: 'Zap' },
+      { label: 'Opšta forma', icon: 'Heart' },
+    ],
   },
   {
-    emoji: '💪',
-    title: 'Tvoja fizička forma',
-    subtitle: 'Budi iskrena — nema pogrešnog odgovora',
-    options: ['Početnica sam', 'Treniram povremeno', 'Redovno vežbam'],
+    emoji: '',
+    title: 'Koji je tvoj nivo forme?',
+    subtitle: 'Izaberi ono što te najbolje opisuje.',
+    options: [
+      { label: 'Početnik', description: 'Tek počinjem ili se vraćam nakon pauze', icon: 'Sprout' },
+      { label: 'Srednji', description: 'Već treniram i imam osnovnu kondiciju', icon: 'TrendingUp' },
+      { label: 'Napredni', description: 'Redovno treniram i želim veći izazov', icon: 'Trophy' },
+    ],
   },
   {
-    emoji: '📅',
-    title: 'Koliko puta nedeljno?',
-    subtitle: 'Preporučujem 3× za optimalne rezultate',
-    options: ['2× nedeljno', '3× nedeljno', '4× nedeljno', '5× nedeljno'],
+    emoji: '',
+    title: 'Koji ti tempo odgovara?',
+    subtitle: 'Izaberi koliko puta nedeljno možeš da treniraš.',
+    options: [
+      { label: '2 puta nedeljno', icon: 'Calendar' },
+      { label: '3 puta nedeljno', icon: 'Calendar' },
+      { label: '4 puta nedeljno', icon: 'CalendarCheck' },
+      { label: '5 puta nedeljno', icon: 'CalendarCheck' },
+    ],
   },
   {
     emoji: '✨',

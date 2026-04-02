@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native';
-import ScreenContainer from '@/components/ui/ScreenContainer';
-import TrainerHero from '@/components/trainer/TrainerHero';
-import TrainerBio from '@/components/trainer/TrainerBio';
-import CertificatesList from '@/components/trainer/CertificatesList';
-import TransformationCard from '@/components/trainer/TransformationCard';
-import TestimonialCard from '@/components/trainer/TestimonialCard';
+import ScreenContainer from '@/components/ui/screen-container';
+import TrainerHero from '@/components/trainer/trainer-hero';
+import TrainerBio from '@/components/trainer/trainer-bio';
+import CertificatesList from '@/components/trainer/certificates-list';
+import TransformationCard from '@/components/trainer/transformation-card';
+import TestimonialCard from '@/components/trainer/testimonial-card';
 import { TRANSFORMATIONS } from '@/data/workouts';
 import { Spacing } from '@/constants/typography';
 

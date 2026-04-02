@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
-import ScreenContainer from '@/components/ui/ScreenContainer';
-import MeasurementsGrid from '@/components/progress/MeasurementsGrid';
-import WeightChart from '@/components/progress/WeightChart';
-import PhotoDiary from '@/components/progress/PhotoDiary';
-import StreakBanner from '@/components/progress/StreakBanner';
-import { useProgress } from '@/hooks/useProgress';
+import ScreenContainer from '@/components/ui/screen-container';
+import MeasurementsGrid from '@/components/progress/measurements-grid';
+import WeightChart from '@/components/progress/weight-chart';
+import PhotoDiary from '@/components/progress/photo-diary';
+import StreakBanner from '@/components/progress/streak-banner';
+import { useProgress } from '@/hooks/use-progress';
 import { Colors } from '@/constants/colors';
 import { Typography, Spacing } from '@/constants/typography';
 

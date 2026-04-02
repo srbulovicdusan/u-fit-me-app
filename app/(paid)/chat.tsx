@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ChatHeader from '@/components/chat/ChatHeader';
-import MessageList from '@/components/chat/MessageList';
-import ChatInput from '@/components/chat/ChatInput';
-import { useChat } from '@/hooks/useChat';
+import ChatHeader from '@/components/chat/chat-header';
+import MessageList from '@/components/chat/message-list';
+import ChatInput from '@/components/chat/chat-input';
+import { useChat } from '@/hooks/use-chat';
 import { Colors } from '@/constants/colors';
 
 export default function ChatScreen() {

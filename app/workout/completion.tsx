@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CompletionStats from '@/components/workout/CompletionStats';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import CompletionStats from '@/components/workout/completion-stats';
+import PrimaryButton from '@/components/ui/primary-button';
 import { Colors } from '@/constants/colors';
 import { Typography, Spacing } from '@/constants/typography';
 

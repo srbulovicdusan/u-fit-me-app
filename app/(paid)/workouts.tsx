@@ -1,60 +1,80 @@
-import { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useMemo } from 'react';
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
-import ScreenContainer from '@/components/ui/ScreenContainer';
-import WorkoutDayCard from '@/components/workout/WorkoutDayCard';
-import CalendarGrid from '@/components/calendar/CalendarGrid';
-import CalendarLegend from '@/components/calendar/CalendarLegend';
-import { WEEK_PLAN } from '@/data/workouts';
+import ScreenContainer from '@/components/ui/screen-container';
+import WorkoutCalendar from '@/components/workout/workout-calendar';
+import DayActivityCard from '@/components/workout/day-activity-card';
+import { useCalendarWorkouts } from '@/hooks/use-calendar-workouts';
 import { Colors } from '@/constants/colors';
 import { Typography, Spacing } from '@/constants/typography';
 
-type ViewMode = 'plan' | 'calendar';
+const DAY_NAMES_FULL = [
+  'Ponedeljak', 'Utorak', 'Sreda', 'Četvrtak', 'Petak', 'Subota', 'Nedelja',
+];
+
+function toMondayIndex(jsDay: number): number {
+  return jsDay === 0 ? 6 : jsDay - 1;
+}
 
 export default function WorkoutsScreen() {
-  const [view, setView] = useState<ViewMode>('plan');
+  const {
+    monthLabel,
+    calendarWeeks,
+    currentWeekIndex,
+    selectedDate,
+    setSelectedDate,
+    selectedDayInfo,
+    goToPrevMonth,
+    goToNextMonth,
+    isLoading,
+    dayHeaders,
+  } = useCalendarWorkouts();
 
-  function handleStart() {
-    const todayIndex = WEEK_PLAN.findIndex(d => d.today);
-    router.push({ pathname: '/workout/active', params: { dayIndex: todayIndex.toString() } });
+  const selectedDayName = useMemo(
+    () => DAY_NAMES_FULL[toMondayIndex(selectedDate.getDay())],
+    [selectedDate],
+  );
+
+  function handleViewWorkout() {
+    if (!selectedDayInfo?.workoutDayId) return;
+    router.push({ pathname: '/workout/detail', params: { dayId: selectedDayInfo.workoutDayId } });
+  }
+
+  if (isLoading) {
+    return (
+      <ScreenContainer>
+        <ActivityIndicator size="large" color={Colors.primary} style={{ flex: 1 }} />
+      </ScreenContainer>
+    );
   }
 
   return (
     <ScreenContainer>
       <View style={styles.header}>
         <Text style={styles.title}>Treninzi</Text>
-        <View style={styles.toggle}>
-          {(['plan', 'calendar'] as ViewMode[]).map(v => (
-            <TouchableOpacity key={v} onPress={() => setView(v)} style={[styles.tab, view === v && styles.tabActive]}>
-              <Text style={[styles.tabText, view === v && styles.tabTextActive]}>
-                {v === 'plan' ? 'Plan' : 'Kalendar'}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
       </View>
 
-      {view === 'plan' ? (
-        <View style={styles.planList}>
-          {WEEK_PLAN.map((day, i) => (
-            <WorkoutDayCard key={i} day={day} onStart={day.today ? handleStart : undefined} />
-          ))}
-        </View>
-      ) : (
-        <>
-          <CalendarGrid />
-          <CalendarLegend />
-        </>
-      )}
+      <WorkoutCalendar
+        monthLabel={monthLabel}
+        calendarWeeks={calendarWeeks}
+        currentWeekIndex={currentWeekIndex}
+        dayHeaders={dayHeaders}
+        onSelectDate={setSelectedDate}
+        onPrevMonth={goToPrevMonth}
+        onNextMonth={goToNextMonth}
+      />
+
+      <DayActivityCard
+        dayInfo={selectedDayInfo}
+        dayName={selectedDayName}
+        onViewWorkout={handleViewWorkout}
+      />
     </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     paddingHorizontal: Spacing.screenPadding,
     paddingTop: Spacing.lg,
     paddingBottom: Spacing.sm,
@@ -62,37 +82,5 @@ const styles = StyleSheet.create({
   title: {
     ...Typography.h1Display,
     color: Colors.text,
-  },
-  toggle: {
-    flexDirection: 'row',
-    backgroundColor: Colors.borderLight,
-    borderRadius: 8,
-    padding: 2,
-  },
-  tab: {
-    paddingVertical: 6,
-    paddingHorizontal: 14,
-    borderRadius: 6,
-  },
-  tabActive: {
-    backgroundColor: Colors.card,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.08,
-    shadowRadius: 3,
-    elevation: 1,
-  },
-  tabText: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: Colors.muted,
-  },
-  tabTextActive: {
-    color: Colors.text,
-  },
-  planList: {
-    paddingHorizontal: Spacing.screenPadding,
-    paddingTop: Spacing.sm,
-    paddingBottom: Spacing.xl,
   },
 });
